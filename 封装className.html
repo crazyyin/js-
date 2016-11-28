@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload=function () {
+          function findByClassName(oParent,whichClassName) {
+              var aChild=oParent.getElementsByTagName("*");
+              var aA=[];
+              for (var i=0;i<aChild.length;i++){
+                  if(aChild[i].className==whichClassName){
+                      aA.push(aChild[i]);
+                  }
+              }
+              return aA;
+          }
+
+          var oUl=document.getElementsByTagName("ul")[0];
+          var aArr=findByClassName(oUl,"one");
+            for (var i=0;i<aArr.length;i++){
+                aArr[i].style.backgroundColor="red";
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="one"></li>
+        <li></li>
+        <li></li>
+        <li class="one"></li>
+        <li></li>
+    </ul>
+</body>
+</html>

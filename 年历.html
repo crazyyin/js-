@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>年历</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .mouth{
+            font-size: 14px;
+            width: 90px;
+            height: 90px;
+            background: #999999;
+            display: inline-block;
+            text-align: center;
+            line-height: 90px;
+            margin: 10px 0 0 10px;
+        }
+        .warp{
+            width: 310px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .content{
+            margin: 10px 0;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .clear-float{
+            font-size: 0;
+        }
+        .clear-float:after{
+            content: "";
+            clear: both;
+        }
+        .mouth.active{
+            background: wheat;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var aDiv=document.getElementsByClassName("mouth");
+            var oContent=document.getElementById("content");
+            var aContent=["吃饭","睡觉","打豆豆","棒子","老虎","鸡","1","2","3","4","5","6"];
+
+            for(var i=0;i<aDiv.length;i++){
+                aDiv[i].index=i;
+                aDiv[i].onclick=function () {
+                    for (var i=0;i<aDiv.length;i++){
+                        aDiv[i].className="mouth";
+                    }
+                    this.className="mouth active";
+                    oContent.innerHTML=aContent[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="warp">
+    <div class="clear-float">
+        <div class="mouth active"><h2>一月</h2></div>
+        <div class="mouth"><h2>二月</h2></div>
+        <div class="mouth"><h2>三月</h2></div>
+        <div class="mouth"><h2>四月</h2></div>
+        <div class="mouth"><h2>五月</h2></div>
+        <div class="mouth"><h2>六月</h2></div>
+        <div class="mouth"><h2>七月</h2></div>
+        <div class="mouth"><h2>八月</h2></div>
+        <div class="mouth"><h2>九月</h2></div>
+        <div class="mouth"><h2>十月</h2></div>
+        <div class="mouth"><h2>十一月</h2></div>
+        <div class="mouth "><h2>十二月</h2></div>
+    </div>
+    <div class="content">
+        <h2 >安排</h2>
+        <p id="content">吃饭</p>
+    </div>
+
+
+    </div>
+</body>
+</html>

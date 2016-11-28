@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            display: none;
+        }
+        .active{
+            background: red;
+        }
+        .div-block{
+            display: block;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+
+            var aItem=document.getElementsByClassName("main");
+            var aInput=document.getElementsByTagName("input");
+
+            for(var i=0;i<aInput.length;i++){
+                aInput[i].index=i;
+                aInput[i].onclick=function () {
+                    for (var i=0;i<aInput.length;i++){
+                        aInput[i].className="";
+                        aItem[i].style.display="none";
+                    }
+                    this.className="active";
+                    aItem[this.index].style.display="block";
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="box">
+
+        <input class="active" type="button" value="标签1">
+        <input type="button" value="标签2">
+        <input type="button" value="标签3">
+
+        <div class="main div-block">这里是1</div>
+        <div class="main">这里是2</div>
+        <div class="main">这里是3</div>
+    </div>
+</body>
+</html>

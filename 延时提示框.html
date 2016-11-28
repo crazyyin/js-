@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .warp{
+            width: 300px;
+            margin: 10px auto;
+            position: relative;
+        }
+        #main{
+            width: 100px;
+            height: 300px;
+            background: gray;
+        }
+        #side{
+            background: red;
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 110px;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv1=document.getElementById("main");
+            var oDiv2=document.getElementById("side");
+            var timer1=null;
+
+            oDiv1.onmouseover=oDiv2.onmouseover=function () {
+                clearTimeout(timer1);
+                setTimeout(show,500);
+            };
+            oDiv1.onmouseout=oDiv2.onmouseout=function () {
+                timer1=setTimeout(hide,500);
+            };
+
+
+            function show() {
+                oDiv2.style.display="block";
+            }
+            function hide() {
+                oDiv2.style.display="none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="warp">
+        <div id="main"></div>
+        <div id="side"></div>
+    </div>
+
+</body>
+</html>
