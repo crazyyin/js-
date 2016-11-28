@@ -12,18 +12,39 @@
         }
     </style>
     <script>
-        window.onload=function () {
-            var oDiv=document.getElementById("two");
-            window.onmousedown=function (ev) {
-                var oEvent=event||ev;
-                var l=oEvent.clientX+oEvent.scrollLeft-oDiv.offsetLeft;
-                var t=oEvent.clientY+oEvent.scrollTop-oDiv.offsetTop;
-                oDiv.onmousemove=function () {
-                    oDiv.offsetLeft=oEvent.clientX+oEvent.scrollLeft-l;
-                    oDiv.offsetTop=oEvent.clientY+oEvent.scrollTop-t;
 
-                }
+        window.onload=function () {
+
+            var oDiv=document.getElementById("two");
+            var x=0;
+            var y=0;
+
+            oDiv.onmousedown=function (ev) {
+                var oEvent=event||ev;
+
+                x=oEvent.clientX-oDiv.offsetLeft;
+                y=oEvent.clientY-oDiv.offsetTop;
+
+                document.onmousemove=function (ev) {
+                    var oEvent=event||ev;
+
+                    oDiv.style.left=(oEvent.clientX+oDiv.scrollLeft-x)+"px";
+                    oDiv.style.top=(oEvent.clientY+oDiv.scrollTop-y)+"px";
+
+
+                };
+
+                document.onmouseup=function () {
+
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    B
+                };
+
+                return false;
             };
+
+
         }
     </script>
 </head>
