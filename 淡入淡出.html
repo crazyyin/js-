@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img1{
+            opacity: 0.3;
+            filter: alpha(opacity:30);
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oImg=document.getElementById("img1");
+            oImg.onmouseover=function () {
+                fade(100);
+            };
+            oImg.onmouseout=function () {
+                fade(30);
+            };
+
+        };
+        var timer=null;
+
+        var ispeed=0;
+        var alpha=30;
+        function fade(iTarget) {
+            var oImg=document.getElementById("img1");
+
+
+            if (iTarget>alpha){
+                ispeed=1;
+            }else {
+                ispeed=-1;
+            }
+            clearInterval(timer);
+            timer=setInterval(function () {
+                if (iTarget==alpha){
+                    clearInterval(timer);
+                }else {
+                    alpha+=ispeed;
+
+                    oImg.style.filter="alpha(opacity:"+alpha+")";
+                    oImg.style.opacity=alpha/100;
+                }
+            },30)
+
+        }
+    </script>
+</head>
+<body>
+    <img id="img1" src="image/thebigbang1.jpg">
+</body>
+</html>

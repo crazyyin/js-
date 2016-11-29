@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动</title>
+    <style>
+        #one{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(256,0,0,0.5);
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv=document.getElementById("one");
+            var oBtn=document.getElementById("two");
+            var timer = null;
+          oBtn.onclick=function () {
+
+
+              clearInterval(timer);
+
+              timer=setInterval(function () {
+
+                  oDiv.style.left = oDiv.offsetLeft + 7 + "px";
+
+                  if (oDiv.offsetLeft>=300){
+
+                      clearInterval(timer);
+
+                      oDiv.style.left="300px";
+
+                  }
+              }, 30)
+          }
+
+        };
+    </script>
+</head>
+<body>
+    <input id="two" type="button" value="开始">
+    <div id="one"></div>
+</body>
+</html>

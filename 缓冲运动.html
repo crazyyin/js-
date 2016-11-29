@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #parent{
+            width: 700px;
+            height: 700px;
+            border: 1px solid black;
+            position: relative;
+        }
+        #child{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv=document.getElementById("child");
+            var oDiv1=document.getElementById("parent");
+            oDiv1.onmouseover=function () {
+                move(oDiv,600);
+            };
+            oDiv1.onmouseout=function () {
+                move(oDiv,0);
+            }
+        };
+        var timer=null;             /*timer 一定要设在函数外*/
+        function move(obj,iTarget) {
+
+            clearInterval(timer);
+            timer=setInterval(function () {
+                var ispeed=(iTarget-obj.offsetLeft)/15;
+                if (ispeed>0){
+                    ispeed=Math.ceil(ispeed)
+                }else {
+                    ispeed=Math.floor(ispeed)
+                }
+                if (obj.offsetLeft==iTarget){
+                    clearInterval(timer);
+                }else {
+                    obj.style.left=obj.offsetLeft+ispeed+"px";
+                }
+
+            },30)
+        }
+    </script>
+</head>
+<body>
+
+    <div id="parent">
+        <div id="child">
+
+        </div>
+    </div>
+</body>
+</html>
